@@ -1,0 +1,408 @@
+/* ==========================================================================
+   APPLE-LEVEL DESIGN SYSTEM & TOKENS FOUNDATION
+   ========================================================================== */
+
+   :root {
+    /* ----------------------------------------------------------------------
+       1. COLOR TOKENS & ACCENTS
+       ---------------------------------------------------------------------- */
+    /* Dark Premium Base Theme (Default color palette) */
+    --color-bg-primary: #020503;       /* Deepest pitch green-charcoal background */
+    --color-bg-secondary: #050c07;     /* Secondary layout backdrop */
+    --color-bg-tertiary: #0a140f;      /* Tertiary surface layers (cards, controls) */
+    
+    /* Emerald Accent Tones */
+    --color-emerald-primary: #10b981;    /* Vibrant Apple Emerald */
+    --color-emerald-secondary: #059669;  /* Darker emerald for hover/active states */
+    --color-emerald-text: #34d399;       /* Minty emerald for text contrast */
+    --color-emerald-glow: rgba(16, 185, 129, 0.18);
+    --color-emerald-glow-strong: rgba(16, 185, 129, 0.45);
+    
+    /* Monochromatic Text Scale */
+    --color-text-primary: #f3f4f6;       /* Crisp near-white */
+    --color-text-secondary: #9ca3af;     /* Muted secondary gray */
+    --color-text-tertiary: #6b7280;      /* Disabled / placeholder slate */
+    
+    /* Borders & Dividers */
+    --color-border-subtle: rgba(255, 255, 255, 0.06);
+    --color-border-medium: rgba(255, 255, 255, 0.12);
+    --color-border-emerald: rgba(16, 185, 129, 0.22);
+    --color-border-focus: var(--color-emerald-primary);
+  
+    /* Selection Tones */
+    --color-selection-bg: var(--color-emerald-glow-strong);
+    --color-selection-text: #ffffff;
+  
+    /* ----------------------------------------------------------------------
+       2. GLASS LAYERS & BLUR LEVELS
+       ---------------------------------------------------------------------- */
+    /* Glassmorphic Layer Specifications */
+    --glass-bg-subtle: rgba(5, 12, 7, 0.4);
+    --glass-bg-medium: rgba(10, 20, 15, 0.65);
+    --glass-bg-thick: rgba(15, 28, 22, 0.85);
+  
+    /* Backdrop Filter Blur Levels */
+    --blur-xs: blur(4px);
+    --blur-sm: blur(8px);
+    --blur-md: blur(16px);
+    --blur-lg: blur(28px);
+    --blur-xl: blur(44px);
+  
+    /* ----------------------------------------------------------------------
+       3. SHADOW & GLOW TOKENS
+       ---------------------------------------------------------------------- */
+    /* Solid Shadows (Volumetric depth) */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.65);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.8);
+    
+    /* Emerald Glow Tones (Luminescent depth) */
+    --glow-emerald-sm: 0 0 12px var(--color-emerald-glow);
+    --glow-emerald-md: 0 0 24px var(--color-emerald-glow);
+    --glow-emerald-lg: 0 0 40px var(--color-emerald-glow-strong);
+  
+    /* ----------------------------------------------------------------------
+       4. RADIUS & BORDER TOKENS
+       ---------------------------------------------------------------------- */
+    /* Apple squircle radius scale */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+  
+    /* Border width scale */
+    --border-thin: 1px;
+    --border-thick: 2px;
+  
+    /* ----------------------------------------------------------------------
+       5. TYPOGRAPHY & FLUID FONT SIZES
+       ---------------------------------------------------------------------- */
+    /* Fonts */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+    /* Fluid Font Sizes (Clamp boundaries for scale-free typography) */
+    --fs-display: clamp(2.5rem, 5vw + 1.2rem, 5.5rem);
+    --fs-h1: clamp(2.0rem, 4vw + 1.0rem, 3.5rem);
+    --fs-h2: clamp(1.5rem, 3vw + 0.8rem, 2.25rem);
+    --fs-h3: clamp(1.25rem, 2vw + 0.6rem, 1.75rem);
+    --fs-body: clamp(0.95rem, 0.5vw + 0.85rem, 1.125rem);
+    --fs-sm: clamp(0.8rem, 0.3vw + 0.75rem, 0.95rem);
+    --fs-xs: clamp(0.7rem, 0.2vw + 0.65rem, 0.8rem);
+  
+    /* Font Weight Scales */
+    --fw-light: 300;
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+  
+    /* ----------------------------------------------------------------------
+       6. SPACING SCALE & CONTAINER WIDTHS
+       ---------------------------------------------------------------------- */
+    /* 4px base modular scale */
+    --spacing-1: 0.25rem;  /* 4px */
+    --spacing-2: 0.5rem;   /* 8px */
+    --spacing-3: 0.75rem;  /* 12px */
+    --spacing-4: 1.0rem;   /* 16px */
+    --spacing-6: 1.5rem;   /* 24px */
+    --spacing-8: 2.0rem;   /* 32px */
+    --spacing-12: 3.0rem;  /* 48px */
+    --spacing-16: 4.0rem;  /* 64px */
+    --spacing-24: 6.0rem;  /* 96px */
+  
+    /* Container Maximum Layout Widths */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1200px;
+  
+    /* ----------------------------------------------------------------------
+       7. GRID SYSTEM & RESPONSIVE BREAKPOINTS
+       ---------------------------------------------------------------------- */
+    /* Grid settings */
+    --grid-columns: 12;
+    --grid-gap-desktop: var(--spacing-6);
+    --grid-gap-mobile: var(--spacing-4);
+  
+    /* Breakpoints (For layout media queries) */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+  
+    /* ----------------------------------------------------------------------
+       8. MOTION, TRANSITIONS & DURATION
+       ---------------------------------------------------------------------- */
+    /* Durations */
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+    --duration-spring: 450ms;
+  
+    /* Custom Apple transitions */
+    --transition-fast: var(--duration-fast) cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: var(--duration-normal) cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-slow: var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1);  /* Cinematic ease-out */
+    --transition-spring: var(--duration-spring) cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce animation */
+  
+    /* ----------------------------------------------------------------------
+       9. ELEVATION, Z-INDEX & CURSORS
+       ---------------------------------------------------------------------- */
+    /* Z-Index scales */
+    --z-behind: -10;
+    --z-base: 1;
+    --z-navbar: 100;
+    --z-dropdown: 200;
+    --z-overlay: 500;
+    --z-modal: 1000;
+  
+    /* Cursor overrides */
+    --cursor-default: default;
+    --cursor-interactive: pointer;
+    --cursor-text: text;
+    --cursor-disabled: not-allowed;
+  }
+  
+  /* ------------------------------------------------------------------------
+     10. THEME SPECIFICS (Light/Dark scheme fallback compatibility)
+     ------------------------------------------------------------------------ */
+  /* Fallback: If user explicitly toggles a light theme, invert standard colors */
+  [data-theme="light"] {
+    --color-bg-primary: #f9fafb;
+    --color-bg-secondary: #f3f4f6;
+    --color-bg-tertiary: #ffffff;
+    --color-emerald-primary: #059669;
+    --color-emerald-secondary: #047857;
+    --color-emerald-text: #065f46;
+    --color-text-primary: #111827;
+    --color-text-secondary: #4b5563;
+    --color-text-tertiary: #9ca3af;
+    --color-border-subtle: rgba(0, 0, 0, 0.05);
+    --color-border-medium: rgba(0, 0, 0, 0.1);
+    --color-border-emerald: rgba(5, 150, 105, 0.15);
+    --glass-bg-subtle: rgba(255, 255, 255, 0.6);
+    --glass-bg-medium: rgba(255, 255, 255, 0.8);
+    --glass-bg-thick: rgba(255, 255, 255, 0.95);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* ==========================================================================
+     BASE ELEMENTS STYLING (Reset & Foundations)
+     ========================================================================== */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-secondary);
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-normal);
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  /* Selection styling */
+  ::selection {
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text);
+  }
+  
+  /* ------------------------------------------------------------------------
+     11. SCROLLBAR SYSTEM
+     ------------------------------------------------------------------------ */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-primary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-bg-primary);
+    border-radius: var(--radius-full);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-emerald-primary);
+  }
+  
+  /* ------------------------------------------------------------------------
+     12. ACCESSIBILITY FOCUS RING
+     ------------------------------------------------------------------------ */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: var(--border-thick) solid var(--color-border-focus);
+    outline-offset: 3px;
+  }
+  
+  /* ==========================================================================
+     ATOMIC COMPONENT TOKENS (No UI rendered, layout variables only)
+     ========================================================================= */
+  
+  /* A. Buttons Scale */
+  .btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: var(--radius-md);
+    transition: var(--transition-normal);
+    cursor: var(--cursor-interactive);
+    border: var(--border-thin) solid transparent;
+    outline: none;
+    user-select: none;
+    text-decoration: none;
+  }
+  
+  .btn-primary {
+    background-color: var(--color-emerald-primary);
+    color: var(--color-bg-primary);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-emerald-secondary);
+    box-shadow: var(--glow-emerald-sm);
+  }
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+  
+  .btn-secondary {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-medium);
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-emerald-primary);
+  }
+  
+  .btn-glass {
+    background: var(--glass-bg-subtle);
+    backdrop-filter: var(--blur-sm);
+    -webkit-backdrop-filter: var(--blur-sm);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-subtle);
+  }
+  .btn-glass:hover {
+    background: var(--glass-bg-medium);
+    border-color: var(--color-emerald-primary);
+    box-shadow: var(--glow-emerald-sm);
+  }
+  
+  /* B. Cards System */
+  .card-base {
+    background-color: var(--color-bg-tertiary);
+    border: var(--border-thin) solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+  }
+  .card-interactive:hover {
+    border-color: var(--color-border-emerald);
+    box-shadow: var(--shadow-md), var(--glow-emerald-sm);
+    transform: translateY(-2px);
+  }
+  
+  .card-glass {
+    background: var(--glass-bg-medium);
+    backdrop-filter: var(--blur-md);
+    -webkit-backdrop-filter: var(--blur-md);
+    border: var(--border-thin) solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-8);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-slow);
+  }
+  .card-glass-interactive:hover {
+    background: var(--glass-bg-thick);
+    border-color: var(--color-border-emerald);
+    box-shadow: var(--shadow-lg), var(--glow-emerald-md);
+    transform: translateY(-4px);
+  }
+  
+  /* C. Badges */
+  .badge-base {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    border: var(--border-thin) solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .badge-emerald {
+    background-color: var(--color-emerald-glow);
+    color: var(--color-emerald-text);
+    border-color: var(--color-border-emerald);
+  }
+  
+  .badge-glass {
+    background: var(--glass-bg-subtle);
+    backdrop-filter: var(--blur-xs);
+    -webkit-backdrop-filter: var(--blur-xs);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border-subtle);
+  }
+  
+  /* ==========================================================================
+     13. LAYOUT UTILITIES
+     ========================================================================== */
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: var(--grid-gap-desktop);
+  }
+  
+  @media (max-width: 1024px) {
+    .grid-layout {
+      gap: var(--grid-gap-mobile);
+    }
+  }
+  
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Aspect ratios */
+  .ratio-16-9 { aspect-ratio: 16 / 9; }
+  .ratio-4-3 { aspect-ratio: 4 / 3; }
+  .ratio-1-1 { aspect-ratio: 1 / 1; }
+  
+  /* Elevation utilities */
+  .elevate-sm { box-shadow: var(--shadow-sm); }
+  .elevate-md { box-shadow: var(--shadow-md); }
+  .elevate-lg { box-shadow: var(--shadow-lg); }

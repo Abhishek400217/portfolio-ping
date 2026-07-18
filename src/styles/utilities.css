@@ -1,0 +1,119 @@
+/* Glassmorphism Components */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-glass);
+  transition: background var(--transition-normal) var(--ease-out-expo),
+              border-color var(--transition-normal) var(--ease-out-expo),
+              box-shadow var(--transition-normal) var(--ease-out-expo);
+}
+
+.glass-hover:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-glass), var(--glow-glass);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-normal) var(--ease-spring),
+              border-color var(--transition-normal) var(--ease-out-expo),
+              box-shadow var(--transition-normal) var(--ease-out-expo);
+}
+
+.glass-card:hover {
+  border-color: var(--border-emerald);
+  box-shadow: var(--shadow-xl), var(--glow-emerald);
+}
+
+/* Neon Text Gradients */
+.text-gradient-emerald {
+  background: linear-gradient(135deg, var(--emerald-300) 0%, var(--emerald-500) 50%, var(--emerald-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-neon {
+  background: linear-gradient(135deg, var(--neon-emerald) 0%, var(--emerald-400) 50%, var(--neon-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Utilities */
+.glow-card-emerald {
+  position: relative;
+}
+.glow-card-emerald::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, var(--emerald-500), transparent, var(--neon-cyan));
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.15;
+  transition: opacity var(--transition-normal) var(--ease-out-expo);
+}
+.glow-card-emerald:hover::after {
+  opacity: 0.4;
+}
+
+/* Premium Layout Helpers */
+.container-premium {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container-premium {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-premium {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* Flex & Grid Layout Extras */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+/* Interactive elements */
+.interactive-hover {
+  transition: transform var(--transition-fast) var(--ease-spring),
+              filter var(--transition-fast) var(--ease-out-expo);
+}
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+.interactive-hover:active {
+  transform: translateY(1px);
+}
