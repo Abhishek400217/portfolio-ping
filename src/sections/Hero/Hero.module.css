@@ -1,0 +1,91 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: var(--spacing-16) var(--spacing-8) var(--spacing-8) var(--spacing-8);
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.heroGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* 60% / 40% split */
+  gap: var(--spacing-12);
+  width: 100%;
+  max-width: var(--container-xl, 1200px);
+  z-index: 10;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 15;
+}
+
+.rightColumn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+}
+
+/* Ping Wrapper to enforce top-right positioning and exact size bounds */
+.pingWrapper {
+  width: 360px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .heroSection {
+    padding: var(--spacing-20) var(--spacing-6) var(--spacing-8) var(--spacing-6);
+  }
+  .heroGrid {
+    grid-template-columns: 1fr; /* Stack on tablet */
+    gap: var(--spacing-8);
+  }
+  .rightColumn {
+    justify-content: center;
+  }
+  .pingWrapper {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: var(--spacing-24) var(--spacing-4) var(--spacing-8) var(--spacing-4);
+  }
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+  .pingWrapper {
+    width: 260px;
+    height: 260px;
+  }
+}

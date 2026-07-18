@@ -1,0 +1,47 @@
+.gridLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3; /* Stacked above base gradients and glows */
+  pointer-events: none;
+  
+  /* Prep for 3D coordinate depth scaling (Stripe-style coordinate tilt) */
+  perspective: 1000px;
+}
+
+.coordinateMesh {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  
+  /* Dual-tone coordinates: Major emerald grid (80px) & minor white grid (20px) */
+  background-image: 
+    linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+  background-position: center;
+  
+  /* Dynamic fade mask overlay to keep edges clean */
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    black 25%,
+    rgba(0, 0, 0, 0.25) 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    black 25%,
+    rgba(0, 0, 0, 0.25) 60%,
+    transparent 100%
+  );
+
+  /* Target variables for future GSAP scroll/tilt animations */
+  transform: rotateX(0deg) translateZ(0);
+  will-change: transform;
+}

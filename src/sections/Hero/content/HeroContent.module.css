@@ -1,0 +1,282 @@
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: calc(100vh - var(--spacing-20) * 2);
+  padding: var(--spacing-8) 0;
+  box-sizing: border-box;
+}
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-6);
+  flex-grow: 1;
+}
+
+/* 1. Status Badge & Availability Chip */
+.availabilityChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: var(--radius-full, 9999px);
+  padding: var(--spacing-2, 6px) var(--spacing-4, 12px);
+  box-sizing: border-box;
+}
+
+.statusLed {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--color-emerald-primary, #10b981);
+  box-shadow: 0 0 8px var(--color-emerald-primary, #10b981);
+  display: inline-block;
+}
+
+.availabilityText {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs, 12px);
+  font-weight: var(--fw-semibold, 600);
+  color: var(--color-emerald-text, #34d399);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.heroEyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs, 12px);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary, #9ca3af);
+  margin: 0;
+}
+
+/* 2. Large Cinematic Heading & Highlighted Emerald Words */
+.heroHeadline {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 5vw, 4.5rem); /* Cinematic large viewport size */
+  font-weight: var(--fw-bold, 800);
+  line-height: 1.05; /* Perfect tight display line height */
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary, #f3f4f6);
+  margin: 0;
+  max-width: 780px;
+}
+
+.highlight {
+  color: var(--color-emerald-primary, #10b981);
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.22);
+  display: inline;
+}
+
+/* 3. Premium Paragraph Styling */
+.heroDescription {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4, 16px);
+  max-width: var(--container-sm, 600px);
+  margin-top: var(--spacing-2, 8px);
+}
+
+.descriptionParagraph {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body, 16px);
+  font-weight: var(--fw-normal, 400);
+  line-height: 1.6; /* Premium line-height for readability */
+  letter-spacing: -0.015em;
+  color: var(--color-text-muted, #9ca3af);
+  margin: 0;
+}
+
+/* 4. Beautiful Glass CTA Buttons */
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4, 16px);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-4, 16px);
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm, 14px);
+  font-weight: var(--fw-semibold, 600);
+  padding: var(--spacing-3, 12px) var(--spacing-6, 24px);
+  border-radius: var(--radius-full, 9999px);
+  cursor: var(--cursor-interactive, pointer);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-sizing: border-box;
+}
+
+/* Emerald Primary CTA */
+.primaryBtn {
+  background: var(--color-emerald-primary, #10b981);
+  color: #020704;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.25);
+  border: 1px solid transparent;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Volumetric Glass Secondary CTA */
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--color-text-primary, #f3f4f6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* 5. Social Links with Hover Offsets */
+.socialsContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6, 24px);
+  margin-top: var(--spacing-6, 24px);
+  box-sizing: border-box;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs, 12px);
+  font-weight: var(--fw-bold, 700);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--color-text-muted, #9ca3af);
+  cursor: var(--cursor-interactive, pointer);
+  transition: all 0.25s ease;
+}
+
+.socialLink:hover {
+  color: var(--color-emerald-primary, #10b981);
+  transform: translateY(-2px);
+}
+
+.linkLabel {
+  text-transform: uppercase;
+}
+
+.iconPlaceholder {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--color-text-muted, #9ca3af);
+  display: inline-block;
+  transition: background-color 0.25s ease;
+}
+
+.socialLink:hover .iconPlaceholder {
+  background-color: var(--color-emerald-primary, #10b981);
+}
+
+/* 6. Statistics Cards with Tabular Splits */
+.statsContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8, 32px);
+  width: 100%;
+  max-width: var(--container-md, 768px);
+  margin-top: var(--spacing-12, 48px);
+  box-sizing: border-box;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1, 4px);
+}
+
+.statValue {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h2, 28px);
+  font-weight: var(--fw-bold, 800);
+  line-height: 1.1;
+  color: var(--color-text-primary, #f3f4f6);
+}
+
+.statLabel {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs, 11px);
+  font-weight: var(--fw-semibold, 600);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #9ca3af);
+}
+
+.statSeparator {
+  width: 1px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .heroContent {
+    min-height: auto;
+    padding: var(--spacing-6) 0;
+    gap: var(--spacing-8);
+  }
+  .topSection {
+    gap: var(--spacing-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    min-height: auto;
+    padding: var(--spacing-4) 0;
+    gap: var(--spacing-6);
+  }
+  .topSection {
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-4);
+  }
+  .heroHeadline {
+    max-width: 100%;
+  }
+  .ctaGroup {
+    justify-content: center;
+  }
+  .statsContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-8);
+  }
+  .statSeparator {
+    display: none; /* Hide separators when stacked vertically */
+  }
+  .statCard {
+    align-items: center;
+    text-align: center;
+  }
+  .socialsContainer {
+    justify-content: center;
+    width: 100%;
+  }
+}
