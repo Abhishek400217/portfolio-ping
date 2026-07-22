@@ -7,7 +7,7 @@ import styles from './HeroContent.module.css';
  */
 export default function HeroStat({ value, label }) {
   return (
-    <div className={styles.statCard}>
+    <div className={styles.statCard} role="listitem">
       <span className={styles.statValue}>{value}</span>
       <span className={styles.statLabel}>{label}</span>
     </div>

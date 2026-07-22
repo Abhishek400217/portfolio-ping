@@ -38,7 +38,7 @@ export default function PingEyebrows({ expression = 'idle', color = '#9ca3af' })
     }
   };
 
-  const active = eyebrowPresets[expression] || eyebrowPresets.idle;
+  const active = eyebrowPresets[expression] || eyebrowPresets[expression === 'sleeping' ? 'sleepy' : 'idle'] || eyebrowPresets.idle;
 
   // Eyebrow shapes: horizontal rounded lines
   // Left anchor center (210, 180), Right anchor center (290, 180)

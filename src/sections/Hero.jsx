@@ -29,16 +29,9 @@ function HeroInner() {
   const pingWrapperRef = useRef(null);
   const heroSectionRef = useRef(null);
 
-  // Hide the navbar immediately on mount so it remains hidden during boot sequence
-  useEffect(() => {
-    const nav = document.querySelector('.navbar-header');
-    if (nav) {
-      gsap.set(nav, { opacity: 0, y: -20 });
-    }
-  }, []);
 
   // Trigger GSAP timeline when boot is completed or bypassed in config
-  const isBootReady = !MASCOT_CONFIG.enableBoot || MASCOT_CONFIG.preview || mascot.bootStep === 'ready';
+  const isBootReady = !MASCOT_CONFIG.bootEnabled || MASCOT_CONFIG.preview || mascot.bootStep === 'ready';
 
   useHeroAnimation({
     backgroundRef,
@@ -57,17 +50,17 @@ function HeroInner() {
   // Finalized production content
   const availabilityText = "OPEN TO OPPORTUNITIES";
   const roleText = "Software Engineer";
+  const headingText = "Hi, I'm Abhishek.";
   const headlineData = {
     text: "From backend architecture to immersive frontend experiences.",
     highlightWords: ["backend architecture", "immersive frontend experiences."]
   };
   const descriptionParagraphs = [
-    "Hi, I'm Abhishek.",
     "I design and build scalable full-stack applications using Java, Spring Boot, React and modern web technologies while focusing on performance, clean architecture and exceptional user experience."
   ];
   const ctaButtons = [
     { label: "Explore Projects", href: "#projects", type: "primary" },
-    { label: "Download Resume", href: "#resume", type: "secondary" },
+    { label: "Download Resume", href: "#resume", type: "secondary", download: true },
     { label: "Let's Talk", href: "#contact", type: "secondary" }
   ];
   const statsList = [
@@ -83,7 +76,7 @@ function HeroInner() {
   ];
 
   return (
-    <SectionWrapper id="hero" className={styles.heroSection} ref={heroSectionRef}>
+    <SectionWrapper id="hero" className={styles.heroSection} ref={heroSectionRef} aria-label="Introduction">
       {/* 1. Visual Canvas Backdrop Layers (z-index: 0) */}
       <div className={styles.heroBackground} ref={backgroundRef}>
         <BackgroundRoot 
@@ -100,6 +93,7 @@ function HeroInner() {
           <HeroContent
             availability={availabilityText}
             eyebrow={roleText}
+            heading={headingText}
             headline={headlineData}
             description={descriptionParagraphs}
             ctas={ctaButtons}
@@ -126,12 +120,8 @@ function HeroInner() {
 
 /**
  * Hero
- * Root Wrapper component injecting RobotProvider context.
+ * Root Wrapper component referencing global RobotProvider context.
  */
 export default function Hero() {
-  return (
-    <RobotProvider>
-      <HeroInner />
-    </RobotProvider>
-  );
+  return <HeroInner />;
 }

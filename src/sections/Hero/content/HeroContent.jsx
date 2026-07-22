@@ -16,6 +16,7 @@ import HeroStats from './HeroStats.jsx';
 export default function HeroContent({
   availability = "Available for work",
   eyebrow = "REDEFINING INTERACTIVITY",
+  heading = "Hi, I'm Abhishek.",
   headline = { text: "Crafting digital experiences with Ping.", highlightWords: ["experiences", "Ping."] },
   description = [
     "Hi, I'm Abhishek. I build reusable, high-performance engines and visual interfaces.",
@@ -31,9 +32,9 @@ export default function HeroContent({
     { platform: "email", href: "mailto:hello@example.com" }
   ],
   stats = [
-    { value: "99.9%", label: "Uptime" },
-    { value: "50+", label: "Projects" },
-    { value: "12", label: "Awards" }
+    { value: "8+", label: "Projects" },
+    { value: "20+", label: "Technologies" },
+    { value: "2026", label: "Graduate" }
   ],
   headlineRef,
   descriptionRef,
@@ -43,8 +44,13 @@ export default function HeroContent({
   return (
     <div className={styles.heroContent}>
       <div className={styles.topSection}>
-        <HeroAvailability status="active" text={availability} />
-        <HeroEyebrow text={eyebrow} />
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
+          <HeroAvailability status="active" text={availability} />
+          <HeroEyebrow text={eyebrow} />
+        </div>
+        <h2 style={{ fontSize: '32px', fontWeight: 800, color: '#fff', margin: '0 0 8px 0', letterSpacing: '-0.02em', fontFamily: 'var(--font-sans)' }}>
+          {heading}
+        </h2>
         <HeroHeadline ref={headlineRef} text={headline.text} highlightWords={headline.highlightWords} />
         <HeroDescription ref={descriptionRef} paragraphs={description} />
         <HeroCTAGroup ref={ctaRef} ctas={ctas} />

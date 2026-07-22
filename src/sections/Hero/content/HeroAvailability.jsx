@@ -8,7 +8,12 @@ import styles from './HeroAvailability.module.css';
  */
 export default function HeroAvailability({ status = "active", text = "Available for work" }) {
   return (
-    <div className={styles.availabilityBadge} data-status={status}>
+    <div 
+      className={styles.availabilityBadge} 
+      data-status={status}
+      role="status"
+      aria-label={`Availability: ${text}`}
+    >
       <span className={styles.statusDot} aria-hidden="true" />
       <span className={styles.badgeText}>{text}</span>
     </div>

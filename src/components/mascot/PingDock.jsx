@@ -26,6 +26,14 @@ export default function PingDock({ state = 'idle', children }) {
           width: '80px'
         };
 
+      case 'off':
+        return {
+          scale: 1,
+          opacity: 0.3,
+          width: '180px',
+          boxShadow: '0 0 0px transparent'
+        };
+
       case 'glow':
         return {
           scale: 1,
@@ -63,6 +71,7 @@ export default function PingDock({ state = 'idle', children }) {
 
   const isClosed = state === 'close';
   const isCollapsed = state === 'collapse';
+  const isOff = state === 'off';
 
   return (
     <AnimatePresence>
@@ -76,12 +85,23 @@ export default function PingDock({ state = 'idle', children }) {
         >
           <div className={styles.glassmorphicDock}>
             {/* 1. Holographic Laser Sweep Overlay */}
-            <div className={styles.hologramRay} />
+            {!isOff && <div className={styles.hologramRay} />}
 
             {/* 2. Left side: Led and Title */}
             <div className={styles.dockStatusGroup}>
-              <span className={styles.dockStatusLed} aria-hidden="true" />
-              {!isCollapsed && <span className={styles.dockTitle}>PING // OS</span>}
+              <span 
+                className={styles.dockStatusLed} 
+                style={isOff ? { backgroundColor: '#4b5563', boxShadow: 'none' } : undefined}
+                aria-hidden="true" 
+              />
+              {!isCollapsed && (
+                <span 
+                  className={styles.dockTitle}
+                  style={isOff ? { color: '#4b5563' } : undefined}
+                >
+                  PING // OS
+                </span>
+              )}
             </div>
 
             {/* 3. Center Slot for Custom Children */}
@@ -90,8 +110,18 @@ export default function PingDock({ state = 'idle', children }) {
             {/* 4. Right side: Mini Metrics System */}
             {!isCollapsed && (
               <div className={styles.dockStatsGroup}>
-                <span className={styles.dockMetricsIndicator}>SYS.OK</span>
-                <span className={styles.dockMetricsIndicator}>v1.0.0</span>
+                <span 
+                  className={styles.dockMetricsIndicator}
+                  style={isOff ? { color: '#4b5563', opacity: 0.5 } : undefined}
+                >
+                  SYS.OK
+                </span>
+                <span 
+                  className={styles.dockMetricsIndicator}
+                  style={isOff ? { color: '#4b5563', opacity: 0.5 } : undefined}
+                >
+                  v1.0.0
+                </span>
               </div>
             )}
           </div>

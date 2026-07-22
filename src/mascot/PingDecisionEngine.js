@@ -105,6 +105,18 @@ export class PingDecisionEngine {
         }
         break;
 
+      case 'MOUSE_LEAVE':
+        if (['Idle', 'Watching', 'Reading', 'ProjectGuide', 'GithubGuide', 'ContactGuide'].includes(currentState)) {
+          stateMachine.transition('Confused');
+        }
+        break;
+
+      case 'MOUSE_RETURN':
+        if (currentState === 'Confused') {
+          stateMachine.transition('Idle');
+        }
+        break;
+
       case 'WINDOW_BLUR':
         // User tabbed out, sleep to preserve resources
         stateMachine.transition('Sleeping');

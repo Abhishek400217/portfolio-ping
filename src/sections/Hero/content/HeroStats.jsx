@@ -10,7 +10,7 @@ const HeroStats = React.forwardRef(function HeroStats({ stats = [] }, ref) {
   if (!stats || stats.length === 0) return null;
 
   return (
-    <div ref={ref} className={styles.statsContainer}>
+    <div ref={ref} className={styles.statsContainer} role="list" aria-label="Key statistics">
       {stats.map((stat, index) => (
         <React.Fragment key={index}>
           <HeroStat value={stat.value} label={stat.label} />

@@ -13,7 +13,7 @@ import MaskLayer from './MaskLayer.jsx';
  */
 const BackgroundRoot = forwardRef(({ children, ...props }, ref) => {
   return (
-    <div ref={ref} className={styles.backgroundRoot} {...props}>
+    <div ref={ref} className={styles.backgroundRoot} aria-hidden="true" {...props}>
       <GradientLayer />
       <GlowLayer />
       <GridLayer />

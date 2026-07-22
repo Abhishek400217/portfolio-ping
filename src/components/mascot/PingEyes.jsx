@@ -39,6 +39,25 @@ export default function PingEyes({ expression = 'idle', color = '#10b981' }) {
     }
 
     switch (expression) {
+      case 'sleeping':
+      case 'closed':
+        // Horizontal lines for both eyes closed
+        return (
+          <motion.line
+            key={`${side}-closed`}
+            x1={cx - 15}
+            y1={cy}
+            x2={cx + 15}
+            y2={cy}
+            stroke={color}
+            strokeWidth="8"
+            strokeLinecap="round"
+            initial={{ scaleY: 0.1 }}
+            animate={{ scaleY: 1 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+          />
+        );
+
       case 'happy':
         // Inverted arc (crescent moon)
         return (

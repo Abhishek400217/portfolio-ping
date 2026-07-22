@@ -7,26 +7,26 @@
        1. COLOR TOKENS & ACCENTS
        ---------------------------------------------------------------------- */
     /* Dark Premium Base Theme (Default color palette) */
-    --color-bg-primary: #020503;       /* Deepest pitch green-charcoal background */
-    --color-bg-secondary: #050c07;     /* Secondary layout backdrop */
-    --color-bg-tertiary: #0a140f;      /* Tertiary surface layers (cards, controls) */
+    --color-bg-primary: #050807;       /* Deepest pitch green-charcoal background */
+    --color-bg-secondary: #0b1412;     /* Secondary layout backdrop */
+    --color-bg-tertiary: #0b1412;      /* Tertiary surface layers (cards, controls) */
     
     /* Emerald Accent Tones */
-    --color-emerald-primary: #10b981;    /* Vibrant Apple Emerald */
-    --color-emerald-secondary: #059669;  /* Darker emerald for hover/active states */
-    --color-emerald-text: #34d399;       /* Minty emerald for text contrast */
-    --color-emerald-glow: rgba(16, 185, 129, 0.18);
-    --color-emerald-glow-strong: rgba(16, 185, 129, 0.45);
+    --color-emerald-primary: #00F5A0;    /* Vibrant Apple Emerald */
+    --color-emerald-secondary: #00F5A0;  /* Darker emerald for hover/active states */
+    --color-emerald-text: #00F5A0;       /* Minty emerald for text contrast */
+    --color-emerald-glow: rgba(0, 245, 160, 0.18);
+    --color-emerald-glow-strong: rgba(0, 245, 160, 0.45);
     
     /* Monochromatic Text Scale */
-    --color-text-primary: #f3f4f6;       /* Crisp near-white */
-    --color-text-secondary: #9ca3af;     /* Muted secondary gray */
-    --color-text-tertiary: #6b7280;      /* Disabled / placeholder slate */
+    --color-text-primary: #FFFFFF;       /* Crisp near-white */
+    --color-text-secondary: #A6B0B5;     /* Muted secondary gray */
+    --color-text-tertiary: #A6B0B5;      /* Disabled / placeholder slate */
     
     /* Borders & Dividers */
-    --color-border-subtle: rgba(255, 255, 255, 0.06);
-    --color-border-medium: rgba(255, 255, 255, 0.12);
-    --color-border-emerald: rgba(16, 185, 129, 0.22);
+    --color-border-subtle: rgba(255, 255, 255, 0.08);
+    --color-border-medium: rgba(255, 255, 255, 0.08);
+    --color-border-emerald: rgba(0, 245, 160, 0.22);
     --color-border-focus: var(--color-emerald-primary);
   
     /* Selection Tones */
@@ -37,9 +37,9 @@
        2. GLASS LAYERS & BLUR LEVELS
        ---------------------------------------------------------------------- */
     /* Glassmorphic Layer Specifications */
-    --glass-bg-subtle: rgba(5, 12, 7, 0.4);
-    --glass-bg-medium: rgba(10, 20, 15, 0.65);
-    --glass-bg-thick: rgba(15, 28, 22, 0.85);
+    --glass-bg-subtle: rgba(255, 255, 255, 0.05);
+    --glass-bg-medium: rgba(255, 255, 255, 0.05);
+    --glass-bg-thick: rgba(255, 255, 255, 0.05);
   
     /* Backdrop Filter Blur Levels */
     --blur-xs: blur(4px);

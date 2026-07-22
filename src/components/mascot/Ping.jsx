@@ -11,6 +11,7 @@ import PingDock from './PingDock.jsx';
 import { usePing } from '../../hooks/usePing.js';
 import { usePingLookController } from '../../hooks/usePingLookController.js';
 import { MASCOT_CONFIG } from '../../config.js';
+import useScroll from '../../hooks/useScroll.js';
 
 /**
  * Ping
@@ -18,15 +19,16 @@ import { MASCOT_CONFIG } from '../../config.js';
  * Dynamically binds state telemetry and interactive look/attraction controllers.
  */
 export default function Ping({
-  expression,
-  armPose,
-  ringSpeed,
-  ringGlowColor,
-  dockState,
-  bubbleText,
-  bubbleVisible,
-  bubbleTyping,
-  hoverHeight = 0
+  expression = '',
+  armPose = '',
+  dockState = '',
+  ringSpeed = null,
+  ringGlowColor = '',
+  hoverHeight = 0,
+  bubbleText = '',
+  bubbleVisible = null,
+  bubbleTyping = null,
+  bubbleRef = null
 }) {
   const containerRef = useRef(null);
 
@@ -36,11 +38,18 @@ export default function Ping({
   // 2. Hook up look tracking & cursor attraction controller
   const lookController = usePingLookController(containerRef);
 
+  // 2b. Scroll tracking for floating detection
+  const { activeSection } = useScroll();
+
   // 3. Resolve props and fall back to controller overrides or usePing context indicators
-  const activeExpression = expression || lookController.expressionOverride || mascot.gesture?.eyeExpression || 'idle';
-  const activeArmPose = armPose || lookController.armPoseOverride || mascot.gesture?.armAnimation || 'idle';
+  const rawExpression = expression || lookController.expressionOverride || mascot.gesture?.eyeExpression || 'idle';
+  const rawArmPose = armPose || lookController.armPoseOverride || mascot.gesture?.armAnimation || 'idle';
+
+  const activeExpression = rawExpression.toLowerCase();
+  const activeArmPose = rawArmPose.toLowerCase();
+
   const activeRingSpeed = typeof ringSpeed === 'number' ? ringSpeed : lookController.ringSpeedOverride || mascot.gesture?.floatingRing?.speed || 10;
-  const activeGlowColor = ringGlowColor || mascot.gesture?.floatingRing?.color || '#10b981';
+  const activeGlowColor = '#00F5A0';
   
   // Resolve dock layouts based on FSM active state
   let resolvedDockState = 'collapse'; // Default collapse state after boot sequence finishes
@@ -55,7 +64,9 @@ export default function Ping({
   const activeBubbleText = bubbleText || mascot.dialogue || '';
   const activeBubbleVisible = typeof bubbleVisible === 'boolean' 
     ? bubbleVisible 
-    : (mascot.state !== 'Sleeping' && (mascot.state !== 'Booting' || mascot.bootStep === 'bubble') && !!activeBubbleText);
+    : (mascot.state !== 'Sleeping' && 
+       (mascot.state !== 'Booting' || mascot.bootStep === 'bubble' || mascot.bootStep === 'bubble-typing') && 
+       (!!activeBubbleText || mascot.bootStep === 'bubble-typing'));
   const activeBubbleTyping = typeof bubbleTyping === 'boolean' ? bubbleTyping : mascot.typing;
 
   // 4. Repeating soft float loop matching design rules (breathing weight)
@@ -86,27 +97,48 @@ export default function Ping({
   const ringY = useTransform(lookController.lookRotation.y, val => val * 0.4);
 
   // Cursor indicator styling
-  const isClickable = mascot.state === 'Sleeping' || mascot.bootStep === 'bubble';
+  const isClickable = false;
+  const hideMascot = false;
+  
+  const isFloating = false;
 
   return (
     <div 
       ref={containerRef}
       className={styles.pingContainer}
-      style={{ cursor: isClickable ? 'pointer' : 'default' }}
-      onClick={mascot.handleMascotClick}
     >
       {/* 1. Speech Bubble Layer */}
-      <PingBubble 
-        text={activeBubbleText} 
-        visible={activeBubbleVisible} 
-        typing={activeBubbleTyping} 
-      />
+      <div 
+        ref={bubbleRef}
+        style={{ 
+          position: 'absolute', 
+          width: '100%', 
+          top: 0, 
+          left: 0, 
+          transform: isFloating ? 'scale(2.55) translateY(-30px)' : 'none', 
+          transformOrigin: 'bottom center', 
+          transition: 'transform 0.5s ease', 
+          pointerEvents: 'none', 
+          display: 'flex', 
+          justifyContent: 'center', 
+          zIndex: 10 
+        }}
+      >
+        <div style={{ pointerEvents: 'auto' }}>
+          <PingBubble 
+            text={activeBubbleText} 
+            visible={activeBubbleVisible} 
+            typing={activeBubbleTyping} 
+          />
+        </div>
+      </div>
 
       {/* 2. Visual Character Stage SVG (500x500 layout grid) */}
       <svg 
         viewBox="0 0 500 500" 
         className={styles.mascotStage}
         xmlns="http://www.w3.org/2000/svg"
+        style={{ opacity: hideMascot ? 0 : 1, transition: 'opacity 0.3s ease' }}
       >
         {/* Ambient Ground Shadow (Scales inversely with height offsets) */}
         <PingShadow hoverHeight={hoverHeight !== 0 ? hoverHeight : gestureY * 3} />

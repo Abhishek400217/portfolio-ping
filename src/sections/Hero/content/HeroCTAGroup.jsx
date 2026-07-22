@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './HeroContent.module.css';
+import { usePing } from '../../../hooks/usePing.js';
 
 /**
  * HeroCTAGroup
@@ -7,10 +8,14 @@ import styles from './HeroContent.module.css';
  * Supports primary, secondary, and glass button actions via mapping profiles.
  */
 const HeroCTAGroup = React.forwardRef(function HeroCTAGroup({ ctas = [] }, ref) {
+  const mascot = usePing();
   if (!ctas || ctas.length === 0) return null;
 
   const handleCTAClick = (e, cta) => {
     if (cta.download) {
+      if (mascot && mascot.triggerEvent) {
+        mascot.triggerEvent('RESUME_DOWNLOAD');
+      }
       return; // Allow native download behavior
     }
     if (cta.href.startsWith('#')) {
@@ -37,6 +42,14 @@ const HeroCTAGroup = React.forwardRef(function HeroCTAGroup({ ctas = [] }, ref) 
             className={`${styles.ctaButton} ${buttonClass}`}
             onClick={(e) => handleCTAClick(e, cta)}
             download={cta.download || undefined}
+            role="button"
+            aria-label={cta.label}
+            onKeyDown={(e) => {
+              if (e.key === ' ') {
+                e.preventDefault();
+                e.currentTarget.click();
+              }
+            }}
           >
             {cta.label}
           </a>
