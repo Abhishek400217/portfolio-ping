@@ -1,66 +1,103 @@
 import React from 'react';
 
-/**
- * PingFace
- * Renders the front obsidian curved glass faceplate vector structure.
- */
 export default function PingFace() {
   return (
-    <g id="ping-face">
-      {/* Definitions for reflections and gradients */}
-      <defs>
-        {/* Dark deep obsidian screen backing gradient */}
-        <radialGradient id="screenBacking" cx="50%" cy="40%" r="60%" fx="50%" fy="30%">
-          <stop offset="0%" stopColor="#0d1f14" />
-          <stop offset="100%" stopColor="#020704" />
-        </radialGradient>
+    <g>
+      <g id="ping-face">
+        <defs>
+          {/* Deep OLED Screen */}
+          <radialGradient
+            id="screenGlow"
+            cx="50%"
+            cy="30%"
+            r="80%"
+          >
+            <stop offset="0%" stopColor="#11251f" />
+            <stop offset="45%" stopColor="#07110d" />
+            <stop offset="100%" stopColor="#010202" />
+          </radialGradient>
 
-        {/* Diagonal specular glare highlights */}
-        <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255, 255, 255, 0.12)" />
-          <stop offset="40%" stopColor="rgba(255, 255, 255, 0.02)" />
-          <stop offset="60%" stopColor="rgba(0, 0, 0, 0)" />
-          <stop offset="100%" stopColor="rgba(0, 0, 0, 0.3)" />
-        </linearGradient>
+          {/* Glass Reflection */}
+          <linearGradient
+            id="glassReflection"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#ffffff18" />
+            <stop offset="18%" stopColor="#ffffff08" />
+            <stop offset="45%" stopColor="#ffffff00" />
+            <stop offset="100%" stopColor="#00000033" />
+          </linearGradient>
+        </defs>
 
-        {/* Continuous glass anti-reflective outline border */}
-        <linearGradient id="glassBorder" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255, 255, 255, 0.15)" />
-          <stop offset="100%" stopColor="rgba(255, 255, 255, 0.03)" />
-        </linearGradient>
-      </defs>
+        {/* OLED Screen */}
+        <rect
+          x="168"
+          y="158"
+          width="164"
+          height="124"
+          rx="36"
+          fill="url(#screenGlow)"
+        />
 
-      {/* 1. Base Obsidian screen layer */}
+        <rect
+          x="170"
+          y="160"
+          width="160"
+          height="120"
+          rx="34"
+          fill="#030504"
+        />
+
+        <rect
+          x="166"
+          y="159"
+          width="168"
+          height="128"
+          rx="34"
+          fill="none"
+          stroke="#ffffff05"
+          strokeWidth=".8"
+        />
+
+
+
+        {/* Reflection */}
+        <path
+          d="
+M182 168
+C215 158 278 160 308 170
+C292 173 255 173 222 175
+C202 176 190 180 184 186
+Z"
+          fill="url(#glassReflection)"
+          opacity=".22"
+        />
+
+        <path
+          d="
+M174 168
+Q182 164 190 170
+"
+          stroke="#ffffff18"
+          strokeWidth="2"
+          strokeLinecap="round"
+          fill="none"
+        />
+
+
+      </g>
+
       <rect
-        x="165"
-        y="155"
-        width="170"
-        height="130"
-        rx="38"
-        fill="url(#screenBacking)"
-      />
-
-      {/* 2. Glass border outline */}
-      <rect
-        x="165"
-        y="155"
-        width="170"
-        height="130"
-        rx="38"
-        fill="none"
-        stroke="url(#glassBorder)"
-        strokeWidth="1.5"
-      />
-
-      {/* 3. Volumetric gloss reflections layer */}
-      <rect
-        x="165"
-        y="155"
-        width="170"
-        height="130"
-        rx="38"
-        fill="url(#glassReflection)"
-        pointerEvents="none"
+        x="170"
+        y="160"
+        width="160"
+        height="120"
+        rx="32"
+        fill="#00F5A0"
+        opacity=".008"
       />
     </g>
   );

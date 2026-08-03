@@ -26,22 +26,125 @@ export default function PingBody({ headColor = '#2b3a30' }) {
 
       {/* 1. Neck Connector Structure */}
       <rect
-        x="242"
-        y="292"
-        width="16"
-        height="15"
-        rx="3"
+        x="238"
+        y="287"
+        width="24"
+        height="18"
+        rx="6"
         fill="url(#neckJoint)"
         stroke="rgba(0, 0, 0, 0.4)"
         strokeWidth="1"
       />
+      <ellipse
+        cx="250"
+        cy="304"
+        rx="12"
+        ry="5"
+        fill="#111"
+      />
 
+      <ellipse
+        cx="250"
+        cy="3"
+        rx="8"
+        ry="3"
+        fill="#00F5A0"
+        opacity=".6"
+      />
       {/* 2. Tiny Teardrop Torso Shell (Pixar-style chibi proportions) */}
       <path
-        d="M 250,302 C 235,302 212,320 207,338 C 202,356 225,366 250,366 C 275,366 298,356 293,338 C 288,320 265,302 250,302 Z"
+        d="
+M250 312
+
+C224 312 206 330 206 356
+
+C206 382 224 396 250 396
+
+C276 396 294 382 294 356
+
+C294 330 276 312 250 312
+
+Z
+"
         fill="url(#bodySheen)"
-        stroke="rgba(255, 255, 255, 0.08)"
-        strokeWidth="1.5"
+        stroke="#ffffff18"
+        strokeWidth="2"
+      />
+      {/* Left Shoulder */}
+
+      <circle
+        cx="214"
+        cy="334"
+        r="5"
+        fill="#7b7b7b"
+      />
+
+      <circle
+        cx="214"
+        cy="334"
+        r="2"
+        fill="#00F5A0"
+      />
+
+      {/* Right Shoulder */}
+
+      <circle
+        cx="286"
+        cy="334"
+        r="5"
+        fill="#7b7b7b"
+      />
+
+      <circle
+        cx="286"
+        cy="334"
+        r="2"
+        fill="#00F5A0"
+      />
+      <path
+        d="
+M228 388
+
+Q250 396 272 388
+"
+        stroke="#00000055"
+        strokeWidth="3"
+        fill="none"
+      />
+
+      {/* Core Housing */}
+
+      <circle
+        cx="250"
+        cy="352"
+        r="15"
+        fill="#26352d"
+      />
+
+      <circle
+        cx="250"
+        cy="352"
+        r="9"
+        fill="#00F5A0"
+      />
+
+      <circle
+        cx="250"
+        cy="352"
+        r="18"
+        fill="#00F5A0"
+        opacity=".10"
+      />
+
+      <path
+        d="
+M225 326
+
+Q250 315 275 326
+"
+        stroke="#ffffff22"
+        strokeWidth="2"
+        fill="none"
       />
     </g>
   );

@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
  * Magnetically suspended base ring.
  * Props: rotationSpeed (RPM), glow (bool/color), hoverHeight (px).
  */
-export default function PingRing({ 
-  rotationSpeed = 10, 
-  glow = true, 
+export default function PingRing({
+  rotationSpeed = 10,
+  glow = true,
   hoverHeight = 0,
   glowColor = '#10b981'
 }) {
