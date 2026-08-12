@@ -1,45 +1,134 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
-/**
- * PingHands
- * Renders the tactile mitten hands with capacitive palm indicators.
- */
-export default function PingHands({ side = 'left', pose = 'idle', color = '#2b3a30' }) {
-  // Base mitten vector paths (relative to center coordinate (0, 0))
-  // Left hand has thumb on right side; Right hand has thumb on left side
-  const handPaths = {
-    left: "M -12,-10 C -18,-10 -22,-6 -22,0 C -22,8 -16,14 -8,14 C -2,14 4,10 4,2 C 4,-2 0,-6 -4,-6 C -6,-6 -8,-4 -8,-4 C -8,-4 -7,-10 -12,-10 Z",
-    right: "M 12,-10 C 18,-10 22,-6 22,0 C 22,8 16,14 8,14 C 2,14 -4,10 -4,2 C -4,-2 0,-6 4,-6 C 6,-6 8,-4 8,-4 C 8,-4 7,-10 12,-10 Z"
-  };
+export default function PingHands({
+  side = "left",
+  pose = "idle"
+}) {
 
-  const path = handPaths[side];
-  const capColor = '#10b981'; // Dynamic capacitive pad glow color
+  const active =
+    pose === "typing" ||
+    pose === "celebrate" ||
+    pose === "wave";
 
   return (
-    <g id={`ping-hand-${side}`} transform="scale(0.6)">
-      {/* 1. Main Hand Mitten Shell */}
-      <motion.path
-        d={path}
-        fill={color}
-        stroke="rgba(255, 255, 255, 0.08)"
-        strokeWidth="1.2"
-        style={{ transformOrigin: 'center' }}
+
+    <g id={`ping-hand-${side}`}>
+
+      {/* ================= WRIST JOINT ================= */}
+
+      <circle
+        cx="0"
+        cy="-14"
+        r="5"
+        fill="#727a76"
       />
 
-      {/* 2. Capacitive Palm Contact Pad (Glows based on active pose) */}
+      <circle
+        cx="0"
+        cy="-14"
+        r="2"
+        fill="#00F5A0"
+      />
+
+      {/* ================= METAL CONNECTOR ================= */}
+
+      <rect
+        x="-3"
+        y="-14"
+        width="6"
+        height="10"
+        rx="3"
+        fill="#4d5752"
+      />
+
+      <rect
+        x="-1"
+        y="-13"
+        width="2"
+        height="8"
+        rx="1"
+        fill="#8d9893"
+        opacity=".45"
+      />
+
+      {/* ================= PALM SHADOW ================= */}
+
+      <ellipse
+        cx="0"
+        cy="8"
+        rx="12"
+        ry="11"
+        fill="#111"
+        opacity=".18"
+      />
+
+      {/* ================= MAIN PALM ================= */}
+
       <motion.circle
-        cx={side === 'left' ? -4 : 4}
-        cy="2"
-        r="4.5"
-        fill={capColor}
-        opacity={pose === 'typing' || pose === 'celebrate' ? 0.85 : 0.25}
-        style={{
-          filter: pose === 'typing' || pose === 'celebrate'
-            ? 'drop-shadow(0 0 3px #10b981)'
-            : 'none'
+        cx="0"
+        cy="8"
+        r="11"
+        fill="#2b3a30"
+        stroke="#8a938d"
+        strokeOpacity=".20"
+        strokeWidth="1.3"
+        animate={{
+          scale: active ? [1, 1.05, 1] : 1
+        }}
+        transition={{
+          duration: 1.3,
+          repeat: Infinity
         }}
       />
+
+      {/* ================= PALM HIGHLIGHT ================= */}
+
+      <ellipse
+        cx="-3"
+        cy="4"
+        rx="5"
+        ry="2.5"
+        fill="#ffffff25"
+      />
+
+      {/* ================= INNER RING ================= */}
+
+      <circle
+        cx="0"
+        cy="8"
+        r="5"
+        fill="#39433e"
+      />
+
+      {/* ================= ENERGY CORE ================= */}
+
+      <motion.circle
+        cx="0"
+        cy="8"
+        r="2.8"
+        fill="#00F5A0"
+        opacity={active ? 1 : .65}
+        animate={{
+          scale: active
+            ? [1, 1.45, 1]
+            : [1, 1.15, 1],
+
+          opacity: active
+            ? [.8, 1, .8]
+            : [.55, .75, .55]
+        }}
+        transition={{
+          duration: 1.2,
+          repeat: Infinity
+        }}
+        style={{
+          filter: "drop-shadow(0 0 8px #00F5A0)"
+        }}
+      />
+
     </g>
+
   );
+
 }

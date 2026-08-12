@@ -16,6 +16,8 @@ export default function PingBody({ headColor = '#2b3a30' }) {
           <stop offset="100%" stopColor="#0b110d" />
         </linearGradient>
 
+
+
         {/* Neck connector joint gradient */}
         <linearGradient id="neckJoint" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#555555" />
@@ -26,21 +28,25 @@ export default function PingBody({ headColor = '#2b3a30' }) {
 
       {/* 1. Neck Connector Structure */}
       <rect
-        x="238"
-        y="287"
-        width="24"
-        height="18"
+        x="239"
+        y="289"
+        width="22"
+        height="14"
         rx="6"
-        fill="url(#neckJoint)"
-        stroke="rgba(0, 0, 0, 0.4)"
-        strokeWidth="1"
+        fill="url(#neckJoint)" />
+      <ellipse
+        cx="250"
+        cy="290"
+        rx="10"
+        ry="2"
+        fill="#ffffff18"
       />
       <ellipse
         cx="250"
         cy="304"
-        rx="12"
-        ry="5"
-        fill="#111"
+        rx="13"
+        ry="4"
+        fill="#121212"
       />
 
       <ellipse
@@ -51,6 +57,17 @@ export default function PingBody({ headColor = '#2b3a30' }) {
         fill="#00F5A0"
         opacity=".6"
       />
+      <circle
+        cx="250"
+        cy="352"
+        r="12"
+        fill="none"
+        stroke="#00F5A0"
+        strokeOpacity=".25"
+        strokeWidth=".8"
+      />
+
+
       {/* 2. Tiny Teardrop Torso Shell (Pixar-style chibi proportions) */}
       <path
         d="
@@ -67,9 +84,44 @@ C294 330 276 312 250 312
 Z
 "
         fill="url(#bodySheen)"
-        stroke="#ffffff18"
-        strokeWidth="2"
+        opacity=".96"
+        stroke="#ffffff12"
+        strokeWidth="1"
       />
+
+      <path
+        d="
+M250 312
+C224 312 206 330 206 356
+C206 382 224 396 250 396
+C276 396 294 382 294 356
+C294 330 276 312 250 312
+Z
+"
+        fill="#00F5A0"
+        opacity=".02"
+      />
+
+      <path
+        d="
+M208 348
+Q212 374 226 388
+"
+        stroke="#ffffff08"
+        strokeWidth="2"
+        fill="none"
+      />
+
+      <path
+        d="
+M292 348
+Q288 374 274 388
+"
+        stroke="#00000055"
+        strokeWidth="2"
+        fill="none"
+      />
+
       {/* Left Shoulder */}
 
       <circle
@@ -80,10 +132,20 @@ Z
       />
 
       <circle
+        cx="213"
+        cy="333"
+        r="2"
+        fill="#ffffff22"
+      />
+
+      <circle
         cx="214"
         cy="334"
-        r="2"
+        r="3"
         fill="#00F5A0"
+        style={{
+          filter: "drop-shadow(0 0 10px #00F5A0)"
+        }}
       />
 
       {/* Right Shoulder */}
@@ -96,11 +158,22 @@ Z
       />
 
       <circle
+        cx="285"
+        cy="333"
+        r="2"
+        fill="#ffffff22"
+      />
+
+      <circle
         cx="286"
         cy="334"
-        r="2"
+        r="2.5"
         fill="#00F5A0"
+        style={{
+          filter: "drop-shadow(0 0 6px #00F5A0)"
+        }}
       />
+
       <path
         d="
 M228 388
@@ -112,15 +185,126 @@ Q250 396 272 388
         fill="none"
       />
 
+
+      <ellipse
+        cx="250"
+        cy="390"
+        rx="24"
+        ry="5"
+        fill="#000"
+        opacity=".18"
+      />
+
+      <path
+        d="
+M250 318
+
+C228 318 212 333 212 355
+
+C212 378 228 390 250 390
+
+C272 390 288 378 288 355
+
+C288 333 272 318 250 318
+
+Z
+"
+        fill="none"
+        stroke="#ffffff10"
+        strokeWidth="1.2"
+      />
+
+      <path
+        d="
+M214 338
+Q217 360 228 382
+"
+        stroke="#ffffff08"
+        strokeWidth="1.5"
+        fill="none"
+      />
+
+      <path
+        d="
+M286 338
+Q283 360 272 382
+"
+        stroke="#00000040"
+        strokeWidth="1.5"
+        fill="none"
+      />
+
+      <path
+        d="
+M224 326
+Q250 318 276 326
+Q264 331 250 331
+Q236 331 224 326
+"
+        fill="#ffffff10"
+      />
+
+      <path
+        d="
+M218 338
+Q250 330 282 338
+"
+        stroke="#ffffff08"
+        strokeWidth="1.5"
+        fill="none"
+      />
+
+      <path
+        d="
+M220 340
+Q250 334 280 340
+"
+        stroke="#ffffff18"
+        strokeWidth=".8"
+        fill="none"
+      />
+
+      <path
+        d="
+M223 345
+Q250 341 277 345
+"
+        stroke="#ffffff08"
+        strokeWidth=".7"
+        fill="none"
+      />
+
       {/* Core Housing */}
 
       <circle
         cx="250"
         cy="352"
-        r="15"
-        fill="#26352d"
+        r="24"
+        fill="#00F5A0"
+        opacity=".08"
       />
 
+      <circle
+        cx="250"
+        cy="352"
+        r="20"
+        fill="none"
+        stroke="#ffffff10"
+        strokeWidth=".8"
+      />
+
+      <circle
+        cx="250"
+        cy="352"
+        r="17"
+        fill="#26352d"
+      />
+      <circle
+        cx="247"
+        cy="348"
+        r="5"
+        fill="#ffffff22"
+      />
       <circle
         cx="250"
         cy="352"
@@ -131,9 +315,8 @@ Q250 396 272 388
       <circle
         cx="250"
         cy="352"
-        r="18"
-        fill="#00F5A0"
-        opacity=".10"
+        r="2.5"
+        fill="#cffff0"
       />
 
       <path
@@ -143,6 +326,36 @@ M225 326
 Q250 315 275 326
 "
         stroke="#ffffff22"
+        strokeWidth="1"
+        fill="none"
+      />
+
+      <path
+        d="
+M228 390
+Q250 394 272 390
+"
+        stroke="#ffffff08"
+        strokeWidth="1"
+        fill="none"
+      />
+
+      <path
+        d="
+M226 392
+Q250 398 274 392
+"
+        stroke="#00000050"
+        strokeWidth="1.5"
+        fill="none"
+      />
+
+      <path
+        d="
+M214 318
+Q250 307 286 318
+"
+        stroke="#ffffff18"
         strokeWidth="2"
         fill="none"
       />
